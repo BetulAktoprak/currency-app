@@ -4,7 +4,7 @@ import { FaRightLong } from "react-icons/fa6";
 import axios from 'axios';
 
 let BASE_URL = "https://api.freecurrencyapi.com/v1/latest";
-let API_KEY = "fca_live_FGdQVac8Q8cnypwqdY0WMjsWwpsydDnhFGNMLnLG";
+let apiKey = import.meta.env.VITE_API_KEY;
 
 function Currency() {
 
@@ -14,7 +14,7 @@ function Currency() {
     const[result, setResult] = useState(0);
 
     const exchange = async() => {
-        const response = await axios.get(`${BASE_URL}?apikey=${API_KEY}&base_currency=${fromCurrency}`);
+        const response = await axios.get(`${BASE_URL}?apikey=${apiKey}&base_currency=${fromCurrency}`);
         const result = (response.data.data[toCurrency] * amount).toFixed(2);
         setResult(result);
     }
